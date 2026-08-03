@@ -4,7 +4,7 @@ from .models import Category
 # Create your views here.
 
 def index(request):
-    categories = Category.objects.all().order_by('id')
+    categories = Category.objects.all().order_by('-id')
     context = {
         'data': categories
     }

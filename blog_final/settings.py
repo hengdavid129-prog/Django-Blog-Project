@@ -39,7 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'category',
-    'tag'
+    'tag',
+    'post',
+    'cloudinary_storage',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -126,3 +129,18 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     'static'
 ]
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'i88g9mvt',
+    'API_KEY': '775348519877449',
+    'API_SECRET': 'YOObmrA5f7Dl0SISpy3GZGCh_Is'
+}
+
+STORAGES = {
+    "default": {
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}

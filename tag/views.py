@@ -3,7 +3,7 @@ from .models import Tag
 
 # Create your views here.
 def index(request):
-    tags = Tag.objects.all().order_by('id')
+    tags = Tag.objects.all().order_by('-id')
     context = {
         'data': tags
     }
