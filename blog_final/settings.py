@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'category',
     'tag',
     'post',
+    'accounts',
     'cloudinary_storage',
     'cloudinary',
 ]

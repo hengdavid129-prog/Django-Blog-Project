@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Category
+from django.contrib.auth.decorators import login_required
+from accounts.decorators import role_require
 
 # Create your views here.
-
+@login_required(login_url='accounts:login')
+@role_require('admin')
 def index(request):
     categories = Category.objects.all().order_by('-id')
     context = {
@@ -10,6 +13,8 @@ def index(request):
     }
     return render(request, 'category/index.html', context)
 
+@login_required(login_url='accounts:login')
+@role_require('admin')
 def create(request):
     if request.method == 'POST':
         cate_name = request.POST.get('name')
@@ -23,6 +28,8 @@ def create(request):
         return redirect('category:index')
     return render(request, 'category/create.html')
 
+@login_required(login_url='accounts:login')
+@role_require('admin')
 def edit(request, item_id):
     category = get_object_or_404(Category, id=item_id)
     if request.method == 'POST':
@@ -36,6 +43,8 @@ def edit(request, item_id):
         return redirect('category:index')
     return render(request, 'category/edit.html', {'data': category})
 
+@login_required(login_url='accounts:login')
+@role_require('admin')
 def delete(request, item_id):
     category = get_object_or_404(Category, id=item_id)
     category.delete()

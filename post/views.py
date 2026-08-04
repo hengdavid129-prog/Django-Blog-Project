@@ -2,9 +2,14 @@ from django.shortcuts import render, redirect, get_object_or_404
 from category.models import Category
 from tag.models import Tag
 from post.models import Post
+from django.contrib.auth.decorators import login_required
+from accounts.decorators import role_require
+
 
 # Create your views here.
 
+@login_required(login_url='accounts:login')
+@role_require('admin')
 def index(request):
     posts = Post.objects.all().order_by('-id')
     context = {
@@ -12,6 +17,8 @@ def index(request):
     }
     return render(request, 'post/index.html', context)
 
+@login_required(login_url='accounts:login')
+@role_require('admin')
 def create(request):
     category = Category.objects.all().order_by('id')
     tag = Tag.objects.all().order_by('id')
@@ -44,6 +51,8 @@ def create(request):
 
     return render(request, 'post/create.html', context)
 
+@login_required(login_url='accounts:login')
+@role_require('admin')
 def edit(request, item_id):
     post = get_object_or_404(Post, id=item_id)
     category = Category.objects.all().order_by('id')
@@ -77,6 +86,8 @@ def edit(request, item_id):
     return render(request, 'post/edit.html', context)
 
 
+@login_required(login_url='accounts:login')
+@role_require('admin')
 def delete(request, item_id):
     post = get_object_or_404(Post, id=item_id)
     if post.thumbnail:

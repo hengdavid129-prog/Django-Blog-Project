@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404
 from post.models import Post
 from post.models import Tag
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
-
+@login_required(login_url='accounts:login')
 def index(request):
     posts = Post.objects.all().order_by('-created_at')
 
@@ -15,6 +17,7 @@ def index(request):
 
     return render(request, 'blog/index.html', context)
 
+@login_required(login_url='accounts:login')
 def detail(request, item_id):
     post = get_object_or_404(Post, id=item_id)
     all_tag = Tag.objects.all()
