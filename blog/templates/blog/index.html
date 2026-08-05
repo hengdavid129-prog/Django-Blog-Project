@@ -74,21 +74,22 @@
                 </div>
             {% endif %} 
             {% empty %} 
-            <div class="col-12">
-                <p>No posts have been published yet.</p>
+            <div class="col-12 d-flex justify-content-center align-items-center" style="min-height: 40vh">
+                  <h5 class="text-center text-muted mb-0">No posts have been published yet.</h5>
             </div>
         {% endfor %}
       </div>
-
-      <!-- Pagination-->
-      <nav aria-label="Pagination">
-        <hr class="my-0" />
-        <ul class="pagination justify-content-center my-4">
-          <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Newer</a></li>
-          <li class="page-item active" aria-current="page"><a class="page-link" href="#!">1</a></li>
-          <li class="page-item"><a class="page-link" href="#!">Older</a></li>
-        </ul>
-      </nav>
+      {% if data %}
+        <!-- Pagination-->
+        <nav aria-label="Pagination">
+          <hr class="my-0" />
+          <ul class="pagination justify-content-center my-4">
+            <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Newer</a></li>
+            <li class="page-item active" aria-current="page"><a class="page-link" href="#!">1</a></li>
+            <li class="page-item"><a class="page-link" href="#!">Older</a></li>
+          </ul>
+        </nav>
+      {% endif %}
     </div>
     <!-- Side widgets-->
     <div class="col-lg-4">

@@ -79,8 +79,8 @@
                 <div class="row">
                     <div class="col-sm-12">
                     <ul class="list-unstyled mb-0 d-flex flex-wrap gap-2">
-                        {% for tag in all_tag %}
-                            <li><a href="#!" class="badge bg-secondary text-decoration-none">{{ tag.name }}</a></li>
+                        {% for tag in post_tag %}
+                            <li><a href="#" class="badge bg-secondary text-decoration-none">{{ tag.name }}</a></li>
                         {% empty %}
                             <li>No tags available.</li>
                         {% endfor %}
